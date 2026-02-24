@@ -26,7 +26,6 @@ var (
 )
 
 func (s *peopleService) Create(req CreatePersonRequest) (CreatePersonResponse, error) {
-	// Required fields check (เพราะ handler อาจจะ bind ได้แต่ไม่ validate)
 	if strings.TrimSpace(req.FirstName) == "" ||
 		strings.TrimSpace(req.LastName) == "" ||
 		strings.TrimSpace(req.Email) == "" ||
@@ -78,5 +77,4 @@ func (s *peopleService) Create(req CreatePersonRequest) (CreatePersonResponse, e
 	return CreatePersonResponse{ID: id}, nil
 }
 
-// ถ้าต้องใช้ต่อ: convert time to date only
 func dateOnly(t time.Time) time.Time { return t.Truncate(24 * time.Hour) }
